@@ -1,0 +1,42 @@
+/*Problem Statement*/
+Alice gave Bob a matrix mat of size n*n, where each cell represents the level of a game. Alice asked Bob to clear the game which is present on the cell (n-1, n-1). But there is some condition that at time t, Bob can only clear the game of level at most t.
+
+In a single turn he can clear the infinite game of the neighboring cell i.e up, down, top and bottom under the timing condition. Your task is to find the minimum time taken to clear the game at cell (n-1, n-1).
+
+Note - You will start the game from cell (0, 0).
+
+Input Format
+The first line contains an integer n – the size of a matrix.
+
+The second line contains the ‘n*n’ elements of the matrix.
+
+Output Format
+Print a single integer ‘k’ – the minimum time taken to clear the game at last cell.
+
+Constraints
+1 <= n <= 50
+
+0 <= arr[i] <= 2500
+
+Sample Testcase 0
+Testcase Input
+2
+0 2 1 3
+Testcase Output
+3
+
+Explanation
+At time 0, you are in the matrix location (0, 0).
+You cannot go anywhere else because 4-directionally adjacent neighbors have a higher level than t = 0.
+You cannot reach point (1, 1) until time 3.
+When the time is 3, we can clear any game in the matrix and hence the last game of the matrix.
+Sample Testcase 1
+Testcase Input
+5
+0 1 2 3 4 24 23 22 21 5 12 13 14 15 16 11 17 18 19 20 10 9 8 7 6
+Testcase Output
+16
+
+Explanation
+The final route is shown.
+We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
