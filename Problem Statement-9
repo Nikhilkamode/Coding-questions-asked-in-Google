@@ -40,3 +40,63 @@ Testcase Output
 Explanation
 The final route is shown.
 We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
+
+/*Ans is Given Below*/
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[][] matrix = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        int result = minimumTimeToClearGame(n, matrix);
+        System.out.println(result);
+    }
+
+    public static int minimumTimeToClearGame(int n, int[][] matrix) {
+        int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        int[][] minTime = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(minTime[i], Integer.MAX_VALUE);
+        }
+
+        minTime[0][0] = matrix[0][0];
+
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        minHeap.offer(new int[]{matrix[0][0], 0, 0});
+
+        while (!minHeap.isEmpty()) {
+            int[] current = minHeap.poll();
+            int t = current[0];
+            int x = current[1];
+            int y = current[2];
+
+            if (x == n - 1 && y == n - 1) {
+                return t;
+            }
+
+            for (int[] dir : directions) {
+                int newX = x + dir[0];
+                int newY = y + dir[1];
+
+                if (newX >= 0 && newX < n && newY >= 0 && newY < n) {
+                    int newTime = Math.max(t, matrix[newX][newY]);
+                    if (newTime < minTime[newX][newY]) {
+                        minTime[newX][newY] = newTime;
+                        minHeap.offer(new int[]{newTime, newX, newY});
+                    }
+                }
+            }
+        }
+
+        return -1; // No path found
+    }
+}
+                            
