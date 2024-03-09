@@ -1,0 +1,128 @@
+Google Interview Questions: Technical 
+1. Count of strings that can be formed using a, b and c under given constraints
+
+Given a length n, count the number of strings of length n that can be made using ‘a’, ‘b’ and ‘c’ with at most one ‘b’ and two ‘c’s allowed.
+
+Solution: 
+
+Input : n = 3 Output : 19 Below strings follow given constraints: aaa aab aac aba abc aca acb acc baa bac bca bcc caa cab cac cba cbc cca ccb Input : n = 4 Output : 39
+2. What is the algorithm used for graph traversal?
+
+DFS (Depth-first search) and BFS (breadth-first search) are efficient algorithms used for graph traversal.
+
+3. What is a binary search tree?
+
+A binary search tree is a rooted data structure where internal nodes store a key greater than all the keys in the node's left subtree and less than those in its right subtree.
+4. How to represent binary search by doing array implementation?
+
+By using one dimensional (1-D  array) array to represent a binary tree.
+
+5. In Java programming language explain the difference between static, constant, and final.
+
+Constant variables never change from their initial value while static variables are initialized only once at the start of the execution and are stored in static memory. The final keywords are when you can't change the value assigned to the variable.
+
+6. What is 'dead beef'?
+
+Dead beef is a hexadecimal value used for debugging the mainframe indicating the deadlock or software crash in the embedded systems. 
+
+7. How to sort 1 million arrays of integers efficiently?
+
+By using the counting sort algorithm which takes advantage of knowing the range of the numbers in the integer array to be sorted (array A).
+
+8. What algorithm is used to find a word in a dictionary?
+
+Aho-Corasick string matching algorithm is used to find a word in a dictionary. 
+
+9. What’s 2 to the power of 64?
+
+2*64 = 2 × 2 × 2 × 2 × … 64 times = 1.8446744e+19.
+
+10. What is the use of the hashcode method in Java?
+
+It helps the program to run faster and facilitates quick access to the data stored.
+
+11. How to reverse only vowels in a string?
+
+This can be done using stack in the following manner:
+
+Store all the vowel characters in a set.
+Create a stack and push all vowel characters present in the input string from left to right.
+Now again traverse the string for each character. ...
+Return the converted string.
+12. Explain Linux virtual memory.
+
+Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of usable memory grows correspondingly. The kernel will write the contents of a currently unused block of memory to the hard disk so that the memory can be used for another purpose.
+
+13. How would you implement a thread-safe LRU cache?
+
+A concurrent LRU cache that supports getting put and the eviction of old keys is implemented. The data structures of ConcurrentLinkedQueue and ConcurrentHashMap are utilized in this process. We use a hashmap as well as a doubly linked list as the data structures that we employ in the implementation of an LRU cache. The eviction order can be maintained with the assistance of a doubly linked list, and an O(1) lookup of cached keys can be achieved with the assistance of a hashmap.
+
+14. How would you go about generating a random sequence of numbers for the lottery?
+
+At the moment when a request for just a lottery ticket was submitted, the computer should use some data, including the computer's real-time clock with accuracy to a millisecond, to activate a procedure that generates five numbers one and Powerball number. This method is known as a lottery draw.
+
+15. How could an internet client/server structure work?
+
+Client-server architecture refers to the design of a computer network wherein a large number of clients (remote processors) ask for something and receive service from a single, centralized server (host computer). Client computers offer a user an interface that enables them to make customer inquiries to a server or view the results that are provided by the server. Client computers are also known as "front ends."
+
+16. How would you find the longest substring which contains only two unique characters?
+
+Perform a loop starting at I = 0 and continuing until N – 1 and think about each visited array. Start an inner loop that goes from j = I + 1 to N – 1, and while it's running, check to see if the current character, S[j], has been seen before. If the condition is met, you should exit the loop and proceed to the next window. If this is not the case, the current character should be marked as visited, as well as the length should be increased to j minus I plus 1.
+
+17. What is multithreaded programming?
+
+The term "multithreading" refers to the capability of a computer program or operating system to support more than one user at the very same time without the need for several instances of the program to be active on the device. The same person can make many requests, as well as multithreading, and can handle all of them.
+
+18. How do you think digital marketing will change in the next five years?
+
+When it comes to digital marketing, the one thing that the future has in store for the sector is an expansion in both need and potential. Every company is rapidly transitioning to online marketing, and digital marketing is all set to play a crucial role in this. Businesses can use digital marketing to target audiences based on various factors like gender, age, location, interests, and education.
+
+19. Can you design a mobile social productivity app for a chain of local orthodontist offices?
+
+Yes, I can do it with reliable tools and a team of experts who can assist me. I will be able to deliver such an app within 20-25 days.
+
+20. Do you think Google should be charging for its productivity apps (Google Docs, Google Sheets, etc.)? Why or why not?
+
+Google doesn't charge anything for normal users which is good. This is compensated by charging the new businesses that sign up for Google Apps. They pay almost USD5 per user per month or USD 50 per customer per year. This means that a company with eight employees that use Google Apps will incur an expense of USD 400 each year. 
+
+21. What is random function RAND?
+
+RAND returns an evenly distributed random real number greater than or equal to 0 and less than 1.
+
+22. How do you transfer cookies to the HTTP protocol?
+
+Ans: For transferring the cookies to HTTP protocol add the "Cookie: name=value" header to your request. 
+
+23. How is a global variable different than local variables?
+
+You can access global variables globally in the complete program, and access to local variables is only within the function.
+
+24. Which data structure is used to manage memory?
+
+Heap data structure is used for memory management.
+
+25. Do you know the size of the C structure below on a 32-bit system? And on a 64-bit machine?
+
+The size of the C structure on a 32-bit is 4 bytes and on a 64-bit machine is 8 bytes.
+
+26. Which regular expression matches an Email id?
+
+A Simple regular expression regex ^(. +)@(\S+)$  matches an email address.
+
+27. Given an array, find the contiguous subarray with the largest sum. (In Dynamic Programming)
+
+Start an iteration for I that goes from 0 to n minus 1, where n is the number of elements in the array.
+
+Now that we have reached this point, we are going to execute a nested loop for j that ranges from I to n minus one and add the value of the element located at index j to a variable called currentMax.
+
+In the end, we will examine each subarray to determine whether or not the currentMax represents the greatest sum of all adjacent subarrays.
+
+28. Find the minimum spanning tree of a connected, undirected graph with weighted edges.
+
+main() 
+Start.
+Enter the number of vertices in this field.
+Initialize variables. 
+Determine the edges that are incident on each vertex and have the least amount of weight.
+Create an array containing all of the vertices that are related to the first vertex.
+If there is more than one component, this indicates that the minimum spanning tree has still not been constructed, and the situation becomes more complicated.
