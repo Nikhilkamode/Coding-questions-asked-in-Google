@@ -1,0 +1,134 @@
+/*Problem Statement*/
+Implement the Data structure class with a constructor:
+
+In this data structure, you can insert key-value pairs. If the key already exists, then the value will be overridden.
+The user will give sum queries of the sum over a prefix string which should return the sum of all the pairs' values whose key starts with the prefix.
+Input Format
+Input can be of three types:
+
+1. A String: This represents the sum operation in the data structure over the input string as a prefix.
+
+2. String followed by an Integer: This represents insert operation with key-value pair as string and integer.
+
+3. exit: Exit the Program
+
+Output Format
+For Each Sum Query, print the integer resultant in a new line.
+
+Constraints
+1 <= key.length, prefix.length <= 50
+key and prefix consist of only lowercase English letters.
+1 <= val <= 1000
+At most 50 calls will be made to insert and sum.
+
+Sample Testcase 0
+Testcase Input
+apple 3
+ap
+app 2
+ap
+exit
+Testcase Output
+3
+5
+
+Explanation
+The following operations are carried out:
+
+
+
+mapSum.insert("apple", 3);
+
+mapSum.sum("ap"); // return 3 (apple = 3)
+
+mapSum.insert("app", 2);
+
+mapSum.sum("ap"); // return 5 (apple + app = 3 + 2 = 5)
+
+/*Ans is given Below*/
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <unordered_set>
+using namespace std;
+
+class Trie{
+  public:
+  int val;
+  Trie* child[26] = {NULL};
+  Trie(){
+    val = 0;
+  }
+};
+
+void push(Trie** trie, string& s, int& num, int ind, int len){
+  int index = s[ind] - 'a';
+  if((*trie)->child[index] == NULL){
+    (*trie)->child[index] = new Trie();
+  }
+  if(ind == len-1){
+    (*trie)->child[index]->val = num;
+    return;
+  }
+  (*trie) = (*trie)->child[index];
+  push(&(*trie), s, num, ind+1, len);
+}
+
+int getSum(Trie* trie, string& s, int ind, int len){
+  int sum = 0;
+  if(ind >= len){
+    for(int i=0;i<26;i++){
+      if(trie->child[i] != NULL) sum += trie->child[i]->val + getSum(trie->child[i], s, ind+1, len);
+    }
+  }
+  else{
+    int index = s[ind] - 'a';
+    if(trie->child[index] == NULL){
+      return 0;
+    } 
+    if(ind == len-1) sum += trie->child[index]->val;
+    sum += getSum(trie->child[index], s, ind+1, len);
+  }
+  return sum;
+}
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    string s;
+    vector<string> v;
+    unordered_set<int> st;
+    int n = 0;
+    while(true){
+      cin>>s;
+      if(s == "exit") break;
+      v.push_back(s);
+      if(s[0] >= '0' && s[0] <= '9'){
+        st.insert(n-1);
+      }
+      n++;
+    }
+    Trie * trie = new Trie();
+    Trie* p_trie;
+    for(int i=0;i<n;){
+      int len = v[i].size();
+      if(st.find(i) != st.end()){
+        int num = 0;
+        for(char& c : v[i+1]){
+          int ind = c - '0';
+          num *= 10;
+          num += ind;
+        }
+        p_trie = trie;
+        push(&p_trie, v[i], num, 0, len);
+        i += 2;
+      }
+      else{
+        cout<<getSum(trie, v[i], 0, len)<<"\n";
+        i++;
+      }
+    }
+    return 0;
+}
