@@ -1,0 +1,66 @@
+/*Problem Statement*/
+Alice gave Bob a Linked List of size n and asked him to find the maximum sum among pairs formed by adding elements at symmetric positions from both ends of the list, such as (first element + last element), (second element + second last element), and so on up to the middle of the list.
+
+You are given the head of the linked list. Your task is to determine the maximum sum based on this condition.
+
+Note: The number of elements in the linked list is always even.
+
+Input Format
+The first line contains an integer n – the size of LinkedList.
+
+The second line contains the ‘n’ elements of the Linked List
+
+Output Format
+Print a single integer ‘k’ – the maximum sum according to the given condition.
+
+Constraints
+1 <= n <= 100000
+
+-5000 <= arr[i] <= 5000
+
+Sample Testcase 0
+Testcase Input
+4
+1 2 3 4
+Testcase Output
+5
+
+/*Explanation*/
+Sum of (1, 4) is 5 and sum of (2, 3) is also 5. So, the maximum sum is 5.
+
+Sample Testcase 1
+Testcase Input
+6
+-1 2 3 2 4 2
+Testcase Output
+6
+/*Explanation*/
+Maximum sum that we can obtain is 2+4 = 6.
+
+/*Ans is Given Below*/
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+      cin>>a[i];
+    int sum=a[0]+a[n-1];
+    for(int i=1;i<n;i++)
+    {
+      if(sum< a[i]+a[n-i-1])
+        sum = a[i]+a[n-i-1];
+
+
+    }
+    cout<<sum;
+    return 0;
+}
